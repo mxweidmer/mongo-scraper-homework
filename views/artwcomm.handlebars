@@ -1,8 +1,11 @@
-<h3>{{article.headline}}</h3>
+<h3 id="{{article._id}}">{{article.headline}}</h3>
 
 <p>{{article.summary}}</p>
 
 <a href="{{article.url}}" target="_blank">Original Article</a>
+
+<input type="text" id="comment-field">
+<button class="comment">Leave comment</button>
 
 <ul>
     {{#each article.comments}}

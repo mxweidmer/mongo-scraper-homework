@@ -51,10 +51,28 @@ app.get("/all", function (req, res) {
 })
 
 app.get("/article/:id", function (req, res) {
-    
-    db.Article.findById({ _id: req.params.id }, function (err, results) {
-        res.render("artwcomm", { article: results });
+    db.Article.findById({ _id: req.params.id }).populate("comments")
+        .then(function (results) {
+            console.log(results);
+            res.render("artwcomm", { article: results });
+        })
+})
+
+app.put("/comment/:id", function (req, res) {
+    db.Comment.deleteOne({ _id: req.params.id }, function (err) {
+        if (err) throw err;
     })
+})
+
+app.post("/article/:id", function (req, res) {
+    db.Comment.create(req.body).then(function (dbComment) {
+        db.Article.findOneAndUpdate({ "_id": req.params.id }, { $push: { comments: dbComment._id } }, { new: true })
+            .then(function (data) {
+                res.json(data)
+            })
+    }).catch(function (err) {
+        res.json(err);
+    });
 })
 
 app.listen(PORT, function () {
