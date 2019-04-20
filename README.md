@@ -3,6 +3,8 @@
 ### Description
 Scrapes recipes from the bon apetit new recipe site, then displays them with links to the original article.  Users can click on the title of the article to go to a site where they can leave or delete comments.  All data is persistent throught the use of a mongodb database.
 
+[Deployed Link](https://mx-mongo-hmw.herokuapp.com/)
+
 ### Technologies
 * MongoDB + Mongoose
 * Node JS
