@@ -1,0 +1,11 @@
+<h3>{{article.headline}}</h3>
+
+<p>{{article.summary}}</p>
+
+<a href="{{article.url}}" target="_blank">Original Article</a>
+
+<ul>
+    {{#each article.comments}}
+    {{> comment}}
+    {{/each}}
+</ul>

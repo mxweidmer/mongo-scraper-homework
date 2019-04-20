@@ -50,6 +50,13 @@ app.get("/all", function (req, res) {
     })
 })
 
+app.get("/article/:id", function (req, res) {
+    
+    db.Article.findById({ _id: req.params.id }, function (err, results) {
+        res.render("artwcomm", { article: results });
+    })
+})
+
 app.listen(PORT, function () {
     console.log("App running on port " + PORT + "!");
 })
