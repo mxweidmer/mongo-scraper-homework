@@ -40,9 +40,14 @@ app.get("/scrape", function (req, res) {
                     console.log(err);
                 });
         });
-
         res.send("Scrape done");
     });
+})
+
+app.get("/all", function (req, res) {
+    db.Article.find({}, function (err, results) {
+        res.json(results);
+    })
 })
 
 app.listen(PORT, function () {
