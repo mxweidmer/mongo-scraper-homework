@@ -46,7 +46,7 @@ app.get("/scrape", function (req, res) {
 
 app.get("/all", function (req, res) {
     db.Article.find({}, function (err, results) {
-        res.json(results);
+        res.render("index", { articles: results });
     })
 })
 
